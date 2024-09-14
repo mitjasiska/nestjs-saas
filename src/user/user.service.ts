@@ -11,11 +11,14 @@ import { eq } from 'drizzle-orm';
 export class UserService {
   constructor(@Inject(DRIZZLE) private db: DrizzleDB) {}
 
-  create(createUserDto: CreateUserDto) {
-    return 'This action adds a new user';
+  async create(createUserDto: CreateUserDto) {
+    return this.db
+      .insert(users)
+      .values(createUserDto)
+      .returning({ insertedId: users.id });
   }
 
-  findAll() {
+  async findAll() {
     return this.db.query.users.findMany({
       with: {
         userRole: {
@@ -28,7 +31,7 @@ export class UserService {
     });
   }
 
-  findOne(id: number) {
+  async findOne(id: number) {
     return this.db.query.users.findMany({
       where: eq(users.id, id),
       with: {
@@ -42,11 +45,17 @@ export class UserService {
     });
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+  async update(id: number, updateUserDto: UpdateUserDto) {
+    const updatedUserId: { updatedId: number }[] = await this.db
+      .update(users)
+      .set(updateUserDto)
+      .where(eq(users.id, id))
+      .returning({ updatedId: users.id });
+
+    return updatedUserId;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} user`;
+  async remove(id: number) {
+    this.db.delete(users).where(eq(users.id, id));
   }
 }

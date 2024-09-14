@@ -9,9 +9,9 @@ POST http://localhost:3000/user
 Content-Type: application/json
 
 {
-  "username": "bob",
-  "email": "bob@example.com",
-  "password": "securepassword"
+  "name": "John Doe",
+  "email": "john.doe@example.com",
+  "password": "password"
 }
 
 ### update user
@@ -19,9 +19,7 @@ PATCH http://localhost:3000/user/1
 Content-Type: application/json
 
 {
-  "username": "bob",
-  "email": "bob@example.com",
-  "password": "securepassword"
+  "name": "Richard Roe"
 }
 
 ### delete user
