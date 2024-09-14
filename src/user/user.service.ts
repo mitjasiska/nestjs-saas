@@ -2,9 +2,8 @@ import { Inject, Injectable } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { DRIZZLE } from '../drizzle/drizzle.module';
-import { DrizzleDB } from '../drizzle/types/drizzle';
+import type { DrizzleDB } from '../drizzle/types/drizzle';
 import { users } from '../drizzle/schema/users.schema';
-import { roles, userRole } from '../drizzle/schema/roles.schema';
 import { eq } from 'drizzle-orm';
 
 @Injectable()
