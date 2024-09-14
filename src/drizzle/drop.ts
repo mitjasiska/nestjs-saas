@@ -20,15 +20,21 @@ const main = async () => {
       WHERE table_schema = 'public' AND table_type = 'BASE TABLE';`;
 
     const result = await db.execute(selectQuery);
-
     const tables = result.rows.map((row) => row.table_name);
 
     for (const table of tables) {
-      const dropQuery = sql`DROP TABLE IF EXISTS ${table} CASCADE`;
+      const dropQuery = sql.raw(`DROP TABLE IF EXISTS ${table} CASCADE`);
 
       await db.execute(dropQuery);
       console.log(`Dropped table ${table}.`);
     }
+
+    // drop __drizzle_migrations table inside drizzle schema
+    const dropMigrationsQuery = sql`
+        DROP TABLE IF EXISTS drizzle.__drizzle_migrations CASCADE`;
+
+    await db.execute(dropMigrationsQuery);
+    console.log(`Dropped table drizzle.__drizzle_migrations.`);
   } catch (error) {
     console.error('Error while dropping tables:', error);
   }
