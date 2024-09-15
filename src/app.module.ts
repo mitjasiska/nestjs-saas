@@ -5,10 +5,7 @@ import { DrizzleModule } from './drizzle/drizzle.module';
 import { UserModule } from './user/user.module';
 import { ConfigModule } from '@nestjs/config';
 
-const envFilePath =
-  process.env.NODE_ENV !== 'test'
-    ? ['.env.local', '.env']
-    : ['.env.test.local', '.env.test'];
+const envFilePath = process.env.NODE_ENV === 'test' ? '.env.test' : '.env';
 
 @Module({
   imports: [
