@@ -1,6 +1,6 @@
 import { drizzle, NodePgDatabase } from 'drizzle-orm/node-postgres';
 import { Pool } from 'pg';
-import * as schema from './schema/schema';
+import * as schema from '../../src/drizzle/schema/schema';
 import 'dotenv/config';
 import { faker } from '@faker-js/faker';
 
@@ -10,7 +10,7 @@ const pool = new Pool({
 });
 const db = drizzle(pool, { schema }) as NodePgDatabase<typeof schema>;
 
-async function main() {
+export const seed = async () => {
   const userIds = await Promise.all(
     Array(50)
       .fill('')
@@ -46,11 +46,4 @@ async function main() {
       });
     }),
   );
-}
-
-main()
-  .then()
-  .catch((err) => {
-    console.error(err);
-    process.exit(0);
-  });
+};

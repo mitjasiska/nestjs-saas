@@ -20,8 +20,8 @@
     "test:e2e": "vitest run --config ./vitest.config.e2e.ts",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
-    "db:seed": "ts-node src/drizzle/seed.ts",
-    "db:drop": "ts-node src/drizzle/drop.ts"
+    "db:seed": "ts-node drizzle/scripts/seed.ts",
+    "db:drop": "ts-node drizzle/scripts/drop.ts"
   },
   "dependencies": {
     "@faker-js/faker": "^9.0.0",

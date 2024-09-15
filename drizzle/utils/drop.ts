@@ -1,6 +1,6 @@
 import { drizzle, NodePgDatabase } from 'drizzle-orm/node-postgres';
 import { Pool } from 'pg';
-import * as schema from './schema/schema';
+import * as schema from '../../src/drizzle/schema/schema';
 import 'dotenv/config';
 import { sql } from 'drizzle-orm';
 
@@ -10,7 +10,7 @@ const pool = new Pool({
 });
 const db = drizzle(pool, { schema }) as NodePgDatabase<typeof schema>;
 
-const main = async () => {
+export const dropAllTables = async () => {
   console.log('🗑️ Dropping all tables!');
 
   try {
@@ -39,12 +39,3 @@ const main = async () => {
     console.error('Error while dropping tables:', error);
   }
 };
-
-(async () => {
-  try {
-    await main();
-  } catch (err) {
-    console.error(err);
-    process.exit(0);
-  }
-})();
