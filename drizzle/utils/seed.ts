@@ -20,6 +20,7 @@ export const seed = async () => {
           .values({
             email: faker.internet.email(),
             name: faker.person.firstName() + ' ' + faker.person.lastName(),
+            username: faker.person.firstName().toLowerCase(),
             password: '',
           })
           .returning();

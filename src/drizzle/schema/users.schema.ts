@@ -5,6 +5,7 @@ import { userRole } from './roles.schema';
 export const users = pgTable('users', {
   id: serial('id').primaryKey(),
   name: text('name').notNull(),
+  username: text('username').notNull(),
   email: text('email').notNull(),
   password: text('password').notNull(),
 });

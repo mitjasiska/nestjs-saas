@@ -31,8 +31,22 @@ export class UserService {
   }
 
   async findOne(id: number) {
-    return this.db.query.users.findMany({
+    return this.db.query.users.findFirst({
       where: eq(users.id, id),
+      with: {
+        userRole: {
+          columns: {},
+          with: {
+            role: true,
+          },
+        },
+      },
+    });
+  }
+
+  async findOneByUsername(username: string) {
+    return this.db.query.users.findFirst({
+      where: eq(users.username, username),
       with: {
         userRole: {
           columns: {},
