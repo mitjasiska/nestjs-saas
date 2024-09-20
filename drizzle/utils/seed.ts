@@ -3,6 +3,7 @@ import { Pool } from 'pg';
 import * as schema from '../../src/drizzle/schema/schema';
 import 'dotenv/config';
 import { faker } from '@faker-js/faker';
+import { users } from '../../src/drizzle/schema/schema';
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
@@ -11,40 +12,36 @@ const pool = new Pool({
 const db = drizzle(pool, { schema }) as NodePgDatabase<typeof schema>;
 
 export const seed = async () => {
-  const userIds = await Promise.all(
-    Array(50)
-      .fill('')
-      .map(async () => {
-        const user = await db
-          .insert(schema.users)
-          .values({
-            email: faker.internet.email(),
-            name: faker.person.firstName() + ' ' + faker.person.lastName(),
-            username: faker.person.firstName().toLowerCase(),
-            password: '',
-          })
-          .returning();
-
-        return user[0].id;
-      }),
-  );
-
+  // Insert roles
   const roles = [
-    { id: 1, name: 'user' },
-    { id: 2, name: 'admin' },
+    { id: 1, name: 'admin' },
+    { id: 2, name: 'user' },
   ];
+  await db.insert(schema.roles).values(roles).returning();
 
-  const insertedRoles = await db.insert(schema.roles).values(roles).returning();
-  const roleIds = insertedRoles.map((role) => role.id);
+  // Insert users
+  const users = [
+    {
+      id: 1,
+      name: 'Admin User',
+      username: 'admin',
+      email: 'admin@example.com',
+      password: 'password',
+    },
+    {
+      id: 2,
+      name: 'Regular User',
+      username: 'user',
+      email: 'user@example.com',
+      password: 'password',
+    },
+  ];
+  await db.insert(schema.users).values(users);
 
-  await Promise.all(
-    userIds.map(async (userId) => {
-      const randomRoleId = Math.floor(Math.random() * roleIds.length);
-
-      return db.insert(schema.userRole).values({
-        userId,
-        roleId: roles[randomRoleId].id,
-      });
-    }),
-  );
+  // Insert user roles
+  const userRole = [
+    { userId: 1, roleId: 1 },
+    { userId: 2, roleId: 2 },
+  ];
+  await db.insert(schema.userRole).values(userRole);
 };
