@@ -1,15 +1,10 @@
-# NestJS SaaS
+# nestjs-saas
 
 ## Description
 
 This project is a boilerplate template for building APIs with [NestJS](https://nestjs.com/). It offers a robust and scalable foundation with essential features and best practices integrated, allowing developers to quickly start developing applications. The template reduces the overhead of initial setup and follows NestJS conventions for a clear project structure.
 
-<div style="display: flex; align-items: center;">
-  <img src="https://github.com/mitjasiska/nestjs-saas/blob/main/media/warning.png" alt="Warning" width="100" style="margin-right: 20px;" />
-  <div>
-    <strong>Note: This project is currently under development and is not ready for use in production. Please use it at your own risk.</strong>
-  </div>
-</div>
+⚠️ Note: This project is currently under development and is not ready for use in production. Please use it at your own risk. ⚠️
 
 ## Features
 
