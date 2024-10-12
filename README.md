@@ -1,66 +1,68 @@
-# nestjs-saas
+# NestJS SaaS
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+This project is a boilerplate template for building APIs with [NestJS](https://nestjs.com/). It offers a robust and scalable foundation with essential features and best practices integrated, allowing developers to quickly start developing applications. The template reduces the overhead of initial setup and follows NestJS conventions for a clear project structure.
+
+<div style="display: flex; align-items: center;">
+  <img src="https://github.com/mitjasiska/nestjs-saas/blob/main/src/media/warning.png" alt="Warning" width="100" style="margin-right: 20px;" />
+  <div>
+    <strong>Note: This project is currently under development and is not ready for use in production. Please use it at your own risk.</strong>
+  </div>
+</div>
 
 ## Features
-- Drizzle
-- Swagger - [Documentation](https://docs.nestjs.com/openapi/introduction)
+
+- TypeScript
+- Drizzle with PostgreSQL database connection
+- Swagger Documentation
 - Jest is replaced by Vitest
 
-## Project setup
+## Project Setup
+
+1. Install dependencies:
+   ```sh
+   npm install
+   ```
+
+2. Copy the example environment file `.env.example` to `.env` and update the environment variables according to your setup:
+   ```sh
+   cp .env.example .env
+   ```
+
+## Compile and Run the Application
 
 ```bash
-$ npm install
-```
-
-## Compile and run the project
-
-```bash
-# development
+# Development
 $ npm run start
 
-# watch mode
+# Watch mode
 $ npm run start:dev
 
-# production mode
+# Production mode
 $ npm run start:prod
 ```
 
-## Run tests
+After setting up and running the application, you can access it at the following URLs:
+
+- Application URL: [http://localhost:3000](http://localhost:3000)
+- Swagger API Documentation: [http://localhost:3000/api](http://localhost:3000/api)
+
+## Run Tests
 
 ```bash
-# unit tests
+# Unit tests
 $ npm run test
 
-# e2e tests
+# E2E tests
 $ npm run test:e2e
 
-# test coverage
+# Test coverage
 $ npm run test:cov
 ```
-
-## Resources
-
-Check out a few resources that may come in handy when working with NestJS:
-
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
 
 - Author - [Mitja Šiška](https://github.com/mitjasiska)
 
 ## License
 
-**nestjs-saas** is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+**NestJS SaaS** is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
