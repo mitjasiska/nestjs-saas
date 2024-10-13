@@ -1,13 +1,16 @@
-import { Controller, Get, Post, Req, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Req, UseGuards, Body } from '@nestjs/common';
 import { LocalGuard } from './guards/local.guard';
 import { Request } from 'express';
 import { JwtAuthGuard } from './guards/jwt.guard';
+import { ApiTags } from '@nestjs/swagger';
+import { AuthPayloadDto } from './dto/auth.dto';
 
+@ApiTags('auth')
 @Controller('auth')
 export class AuthController {
   @Post('login')
   @UseGuards(LocalGuard)
-  login(@Req() req: Request) {
+  login(@Body() authPayloadDto: AuthPayloadDto, @Req() req: Request) {
     return { token: req.user };
   }
 
