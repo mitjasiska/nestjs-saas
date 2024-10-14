@@ -2,7 +2,7 @@ import { Controller, Get, Post, Req, UseGuards, Body } from '@nestjs/common';
 import { LocalGuard } from './guards/local.guard';
 import { Request } from 'express';
 import { JwtAuthGuard } from './guards/jwt.guard';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { AuthPayloadDto } from './dto/auth.dto';
 
 @ApiTags('auth')
@@ -16,6 +16,7 @@ export class AuthController {
 
   @Get('me')
   @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
   me(@Req() req: Request) {
     return req.user;
   }
