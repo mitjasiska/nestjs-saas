@@ -4,7 +4,8 @@
 
 This project is a boilerplate template for building APIs with [NestJS](https://nestjs.com/). It offers a robust and scalable foundation with essential features and best practices integrated, allowing developers to quickly start developing applications. The template reduces the overhead of initial setup and follows NestJS conventions for a clear project structure.
 
-⚠️ Note: This project is currently under development and is not ready for use in production. Please use it at your own risk. ⚠️
+> [!CAUTION]
+> This project is currently under development and is not ready for use in production. Please use it at your own risk.
 
 ## Features
 
@@ -37,6 +38,26 @@ $ npm run start:dev
 # Production mode
 $ npm run start:prod
 ```
+
+## Database
+
+1. Update `DATABASE_URL` in `.env` with your connection string.
+
+2. List of database commands:
+
+    ```bash
+    # Generate new migration files
+    $ npm run db:generate
+    
+    # Apply migrations to your database
+    $ npm run db:migrate
+    
+    # Seed data to your database
+    $ npm run db:seed
+    
+    # Drop all tables in your database
+    $ npm run db:drop
+    ```
 
 After setting up and running the application, you can access it at the following URLs:
 
